@@ -81,7 +81,7 @@ public:
     // tell must return the current reading position (in bytes) in the stream, or -1 on error.
 
     // getSize must return the total size (in bytes) of the data which is contained in the stream, or -1 on error.
-  
+
 };
 
 void process(sf::InputStream& stream) {}; // to actually do something with the input
@@ -89,12 +89,12 @@ void process(sf::InputStream& stream) {}; // to actually do something with the i
 int main()
 {
     // WINDOWS
-    
+
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!"); // params are size and title of window , dif btwn RenderWindow and Window? 
- 
+
     window.setPosition(sf::Vector2i(10, 50)); // change the position of the window (relative to the desktop)
 
-    
+
     window.setSize(sf::Vector2u(640, 480)); // change the size of the window
     // window.setFramerateLimit(60); // call once after creating the window to set a frame rate (don't use w/vsync)
     window.setVerticalSyncEnabled(true); // call once after creating the window to sync frame rate to monitor refresh rate
@@ -112,16 +112,16 @@ int main()
     {
 
         // EVENTS
-        
+
         // sf::Event is a union, so only one of its members is valid at a time, the valid member is the one that matches the event type.
         //           e.g. event.key for a KeyPressed event; all members of a union share the same memory space, reading invalid is undefined
         //           
 
         sf::Event event; // sf::Event instances are filled by the pollEvent (or waitEvent) function of the sf::Window class.
-        
+
         // check all the window's events that were triggered since the last iteration of the loop
         while (window.pollEvent(event)) // event loop
-        {                 
+        {
             // check the type of the event...
             switch (event.type)
             {
@@ -229,12 +229,12 @@ int main()
          // do some stuff
         sf::Time time_elapsed = clock.getElapsedTime();
         std::cout << time_elapsed.asSeconds() << std::endl;
-        
+
         sf::Time elapsed = clock.restart();  // restart clock (next frame?) also returns elapsed time so you don't have to call getElapsedTime before it
         // updateGame(elapsed); update game logic with elapsed time
 
 
-        
+
     }
 
     return 0;
