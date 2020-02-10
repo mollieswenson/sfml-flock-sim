@@ -27,7 +27,8 @@ Flock::~Flock() {}
 
 void Flock::Update()
 {
-	for (int i = 0; i < flock.size(); i++)
+
+	for (unsigned int i = 0; i < flock.size(); i++)
 		flock[i].Update();
 }
 

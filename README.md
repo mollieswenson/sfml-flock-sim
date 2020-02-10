@@ -4,6 +4,8 @@ This is a practice C++ project implementing a flock simulation (also known as bo
 
 A flock simulation features **emergent behavior**, which is the behavior of a system that does not depend on its individual parts, but on their relationships to one another.
 
+![](BOIDS.gif)
+
 ## Flocking behavior fundamentals
 
 Each bird applies cohesion, alignment, and separation rules to its immediate neighbors within a limited range.

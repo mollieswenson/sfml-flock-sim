@@ -8,7 +8,7 @@ int Game::Run()
 	sf::RenderWindow window(sf::VideoMode(800, 800), "Boids");
 
 	int num = 300;
-	Flock bird(num);
+	Flock birds(num);
 
 	std::vector<sf::CircleShape> shapes(num); // create the shapes
 	for (int i = 0; i < num; i++)
@@ -19,13 +19,13 @@ int Game::Run()
 
 	while (window.isOpen())
 	{
-		bird.Update();
+		birds.Update();
 
 		window.clear(sf::Color::Black);
 
 		for (int i = 0; i < num; i++)
 		{
-			shapes[i].setPosition(bird.flock[i].position);
+			shapes[i].setPosition(birds.flock[i].position);
 			window.draw(shapes[i]);
 		}
 			
