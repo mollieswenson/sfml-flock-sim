@@ -20,11 +20,39 @@ I used this [Boids Pseudocode](http://www.kfish.org/boids/pseudocode.html) for r
 * **`Flock`** creates and manages a vector of `Boid` objects, which it initially sets with a random starting position and random starting velocity. While the game runs, its function `Update()` calls each `Boid`'s `Update()`. 
 * **`Boid`** represents an individual boid, and they have their own `position` and `velocity` which determines their movements. They have a pointer to their `flock` so they can find other `Boid`'s, and ranges at which to apply their member functions `Cohesion()`, `Alignment()`, and `Separation()` are stored on the individual `Boid`.
 
-## Visual Studio Setup 
+## Visual Studio 2019 Setup 
 
 Here's how to set up for 32-bit, assuming 32-bit compiler is available.
 
-1. Download [Visual C++ 15 (2017) - 32-bit](https://www.sfml-dev.org/download/sfml/2.5.1/) and place at C:\Program Files (x86)\SFML-2.5.1.
+The external dependencies ([SFML](https://www.sfml-dev.org/download/sfml/2.5.1/) and [Box2D() ) are included [boids/external/]().
+
+Use VS 2019
+
+In the VS solution, simulation **Project Properties** is configured like:
+
+* Configuration: Active (Debug/Release)
+* Platform: Win32
+* Configuration Manager > 
+    * Active Solution Configuration: Debug/Release (set both)
+    * Active Solution Platform: Win32 (both debug and release)
+    * Project / Configuration / Platform / Build: sfml-flock-sim / Debug/Release / Win32 / True
+* C/C++ > General > Additional Include Directories > add Program Files(x86)\SFML-2.5.1\include
+* Linker > General > Additional Library Directories > add Program Files(x86)\SFML-2.5.1\lib
+* Linker > Input > Additional Dependencies > List of libs must match release/debug (below are debug)
+    * `sfml-audio-d.lib`
+    * `sfml-graphics-d.lib`
+    * `sfml-window-d.lib`
+    * `sfml-system-d.lib`
+    * `sfml-main-d.lib`
+    * `sfml-network-d.lib`
+* Linker > Advanced > Target Machine: MachineX86
+
+
+
+
+1. Download [SFML Visual C++ 15 (2017) - 32-bit](https://www.sfml-dev.org/download/sfml/2.5.1/) and place at C:\Program Files (x86)\SFML-2.5.1.
+
+
 2. Open sfml-flock-sim.sln and ensure the following settings in Project Properties
     * Configuration: Active (Debug/Release)
     * Platform: Win32
