@@ -1,6 +1,7 @@
 #pragma once
 
 #include "game.h"
+#include "box2d/box2d.h"
 
 // store velocity as a unit vector and speed as a float, makes max speed calcs easier
 // if velocity was a unit vector, then you would have to normalize it
@@ -21,7 +22,25 @@ public:
 	Boid();
 	~Boid();
 
-	sf::CircleShape shape; // the shape that we'll draw? move? should this be ptr to a shape? 
+	sf::CircleShape shape; // the shape that we'll draw? move? should this be ptr to a shape?
+
+	b2Vec2 b2_pos; // position
+	float b2_vel; // velocity as a unit vector
+
+	Flock& flockRef; // reference to this boid's flock object
+
+	float coh_range; // range in which apply each
+	float sep_range;
+	float ali_range;
+
+
+	void init(); // set color, shape, etc. and pos to random location outside of bopunds but less than x
+
+	b2Vec2 b2_coh(std::vector<Boid>& in_range); // return vector toward avg loc of max_range boids
+	b2Vec2 b2_sep(std::vector<Boid>& in_range); // return vector away from min_range boids
+	b2Vec2 b2_ali(std::vector<Boid>& in_range); // return vector avg velocity of max_range boids
+
+
 
 	std::vector<Boid>* flock; // the flock this boid belongs to
 
