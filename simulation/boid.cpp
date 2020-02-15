@@ -10,40 +10,40 @@ Boid::~Boid() {}
 
 void Boid::init()
 {
-	srand(unsigned int(time(NULL)));
+	//srand(unsigned int(time(NULL)));
 
-	int width = 100;
-	int height = 100;
+	//int width = 100;
+	//int height = 100;
 
-	// in bounds is.. 
-	// x is either greater than 0, or less than 100 ( 0 < x < 100) between 1 and 100
-	// y is either greater than 0, or less than 100 ( 0 < y < 100) between 1 and 100
-	
+	//// in bounds is.. 
+	//// x is either greater than 0, or less than 100 ( 0 < x < 100) between 1 and 100
+	//// y is either greater than 0, or less than 100 ( 0 < y < 100) between 1 and 100
+	//
 
-	// out of bounds is.. 
-	// x is either less than 0, or greater than 100 ( 0 > x > 100 ) below 0, above 100
-	// y is either less than 0, or greater than 100 ( 0 > y > 100) below 0, above 100
+	//// out of bounds is.. 
+	//// x is either less than 0, or greater than 100 ( 0 > x > 100 ) below 0, above 100
+	//// y is either less than 0, or greater than 100 ( 0 > y > 100) below 0, above 100
 
-	// out of bounds with max out of bound contstriants is.. 
-	// x is either less than 0, greater than -100, or greater than 100, or less than 200 ( 0 > x > -100 || 100 < x < 200 ) between -100 - 0 || 100 - 200
-	// y is either less than 0, greater than -100, or greater than 100, or less than 200 ( 0 > y >  100 || 100 < y < 200 ) between -100 - 0 || 100 - 200
+	//// out of bounds with max out of bound contstriants is.. 
+	//// x is either less than 0, greater than -100, or greater than 100, or less than 200 ( 0 > x > -100 || 100 < x < 200 ) between -100 - 0 || 100 - 200
+	//// y is either less than 0, greater than -100, or greater than 100, or less than 200 ( 0 > y >  100 || 100 < y < 200 ) between -100 - 0 || 100 - 200
 
-	// so we need a random number between either -100 and 0, or 100 and 200, so between -100 and 200, and then cut out 0 - 100
-	// so rand number between smallest and larges, then subtract length or width
-
-
-	// outPut = rand() % ((userEnd - userBeg) + 1) + userBeg;
-
-	// outPut = rand() % ((userEnd - userBeg) + 1) + userBeg;
+	//// so we need a random number between either -100 and 0, or 100 and 200, so between -100 and 200, and then cut out 0 - 100
+	//// so rand number between smallest and larges, then subtract length or width
 
 
+	//// outPut = rand() % ((userEnd - userBeg) + 1) + userBeg;
+
+	//// outPut = rand() % ((userEnd - userBeg) + 1) + userBeg;
 
 
-	b2_pos.x = static_cast <float>(rand() % 100);
-	b2_pos.y = static_cast <float>(rand() % 300); // init location
 
-	shape.setRadius(3.f);
-    shape.setFillColor(sf::Color::Red); // shape properties
+
+	//b2_pos.x = static_cast <float>(rand() % 100);
+	//b2_pos.y = static_cast <float>(rand() % 300); // init location
+
+	//shape.setRadius(3.f);
+ //   shape.setFillColor(sf::Color::Red); // shape properties
 }
 
 
