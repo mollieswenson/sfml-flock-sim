@@ -1,21 +1,14 @@
 #include "game.h"
+#include <iostream>
 
 Game::Game() {}
 Game::~Game() {}
 
 int Game::Run()
 {
-	sf::RenderWindow window(sf::VideoMode(800, 800), "Boids");
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Boids");
 
-	int num = 300;
-	Flock birds(num);
-
-	std::vector<sf::CircleShape> shapes(num); // create the shapes
-	for (int i = 0; i < num; i++)
-	{
-		shapes[i].setRadius(3.f);
-		shapes[i].setFillColor(sf::Color::Green);
-	}
+	Flock birds(40);
 
 	while (window.isOpen())
 	{
@@ -23,11 +16,8 @@ int Game::Run()
 
 		window.clear(sf::Color::Black);
 
-		for (int i = 0; i < num; i++)
-		{
-			shapes[i].setPosition(birds.flock[i].position);
-			window.draw(shapes[i]);
-		}
+		for (int i = 0; i < birds.collection.size(); i++)
+			window.draw(birds.collection[i].shape);
 			
 		window.display();
 

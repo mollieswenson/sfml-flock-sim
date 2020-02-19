@@ -3,65 +3,43 @@
 #include "game.h"
 #include "box2d/box2d.h"
 
-// store velocity as a unit vector and speed as a float, makes max speed calcs easier
-// if velocity was a unit vector, then you would have to normalize it
-
-
-// make flock a reference to the flock object, not a pointer to it. 
-
-// dont allow direct access to flock? what if i write it in such a way that boids can change flock and it wont mess things up? bad practice? 
-
-// use const
-
-// flock obj could have method to get widtyh height (of.. the flock? how is that useful? can we use it to check in bounds?) 
-
-
 class Boid
 {
 public:
 	Boid();
 	~Boid();
 
-	sf::CircleShape shape; // the shape that we'll draw? move? should this be ptr to a shape?
+	void Init(); // set color, shape, etc. and pos to random location outside of bopunds but less than x
 
-	b2Vec2 b2_pos; // position
-	float b2_vel; // velocity as a unit vector
+	sf::ConvexShape shape;
 
-	//Flock& flockRef; // reference to this boid's flock object
+	std::string id = ""; // for testing
 
-	//float coh_range; // range in which apply each
-	//float sep_range;
-	//float ali_range;
+	float bound_x = 800;
+	float bound_y = 600;
 
+	b2Vec2 position = b2Vec2(0,0); // current position
+	b2Vec2 velocity = b2Vec2(0,0); // store this as a unit vector? 
 
-	void init(); // set color, shape, etc. and pos to random location outside of bopunds but less than x
+	float coh_distance = 25;
+	float sep_distance = 20;
+	float ali_distance = 70;
+	
+	float coh_weight = 1.0;
+	float sep_weight = .5;
+	float ali_weight = 1.5;
+	
+	float max_speed = .5; // something wrong here, sometimes they go faster when this is smaller
+	float max_turn = .5;
 
-//	b2Vec2 b2_coh(std::vector<Boid>& in_range); // return vector toward avg loc of max_range boids
-//	b2Vec2 b2_sep(std::vector<Boid>& in_range); // return vector away from min_range boids
-//	b2Vec2 b2_ali(std::vector<Boid>& in_range); // return vector avg velocity of max_range boids
-//
+	void Cohesion(b2Vec2&, std::vector<Boid>&); // sets cohesion vector toward avg loc of max_range boids
+	void Separation(b2Vec2&, std::vector<Boid>&); // sets separation vector away from min_range boids
+	void Alignment(b2Vec2&, std::vector<Boid>&); // sets alignment vector avg velocity of max_range boids
 
-
-	std::vector<Boid>* flock; // the flock this boid belongs to
-
-	sf::Vector2f position; // current position
-	sf::Vector2f velocity; // 
-
-	float width = 800; // move to game?
-	float height = 800;
-
-	float max_range = 90; // move to flock?
-	float min_spacing = 20;
-	float max_speed = 2;
-
-	sf::Vector2f Cohesion(std::vector<Boid>& in_range); // return vector toward avg loc of max_range boids
-	sf::Vector2f Separation(std::vector<Boid>& in_range); // return vector away from min_range boids
-	sf::Vector2f Alignment(std::vector<Boid>& in_range); // return vector avg velocity of max_range boids
-
-	std::vector<Boid> GetInRange(const std::vector<Boid>& v, float r) const; // returns boids from v within r range
-	float Magnitude(const sf::Vector2f v) const; // returns the magnitude of v
-	float Distance(const sf::Vector2f v) const; // returns distance between this vector and v
-	void Normalize(sf::Vector2f& v);
-	void WrapWindow(); // moves boids that leave the window bounds to the opposite side of the window
-	void Update();
+	float Magnitude(const b2Vec2&) const; // returns  magnitude
+	float Distance(const b2Vec2&) const; // returns distance between this vector and v
+	void Update(std::vector<Boid>&);
+	void Limit(b2Vec2&, float);
+	void SetShape();
+	void Bounds();
 };

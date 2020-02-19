@@ -1,25 +1,42 @@
 #include "flock.h"
+#include <iostream>
 
 Flock::Flock(int size)
 {                      
-	unsigned int time_ui = unsigned int(time(NULL));
-	srand(time_ui);
+	// always add some colored boids so i can identify individuals on screen for debugging
+
+	Boid Green;
+	Green.id = "Green";
+	Green.shape.setOutlineColor(sf::Color::Green);
+
+	Boid Yellow;
+	Yellow.id = "Yellow";
+	Yellow.shape.setOutlineColor(sf::Color::Yellow);
+
+	Boid Cyan;
+	Cyan.id = "Cyan";
+	Cyan.shape.setOutlineColor(sf::Color::Cyan);
+
+	Boid Blue;
+	Blue.id = "Blue";
+	Blue.shape.setOutlineColor(sf::Color::Blue);
+
+	Boid Magenta;
+	Magenta.id = "Magenta";
+	Magenta.shape.setOutlineColor(sf::Color::Magenta);
+
+	collection.push_back(Green);
+	collection.push_back(Yellow);
+	collection.push_back(Cyan);
+	collection.push_back(Blue);
+	collection.push_back(Magenta);
 
 	for (int i = 0; i < size; i++)
 	{
 		Boid boid;
+		boid.id = i;
 
-		boid.flock = &flock;
-
-		float x = static_cast <float>(rand() % 800); // window size
-		float y = static_cast <float>(rand() % 800);
-		boid.position = sf::Vector2f(x, y);
-
-		x = static_cast <float>(1 + rand() % 100);
-		y = static_cast <float>(1 + rand() % 100);
-		boid.velocity = sf::Vector2f(x, y);
-
-		flock.push_back(boid);
+		collection.push_back(boid);
 	}
 }
 
@@ -27,8 +44,6 @@ Flock::~Flock() {}
 
 void Flock::Update()
 {
-
-	for (unsigned int i = 0; i < flock.size(); i++)
-		flock[i].Update();
+	for (unsigned int i = 0; i < collection.size(); i++)
+		collection[i].Update(collection);
 }
-
