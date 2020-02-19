@@ -3,9 +3,6 @@
 
 #include "boid.h"
 
-// http://www.kfish.org/boids/pseudocode.html
-// https://www.oreilly.com/library/view/ai-for-game/0596005555/ch04.html
-
 void Multiply(b2Vec2& v, float f);
 void Divide(b2Vec2& v, float f);
 

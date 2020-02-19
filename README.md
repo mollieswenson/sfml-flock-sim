@@ -2,29 +2,23 @@
 
 This is a practice C++ project implementing a flock simulation using [SFML](https://www.sfml-dev.org/) and [Box2D](https://box2d.org/). 
 
+A flock simulation features **emergent behavior**, which is the behavior of a system that does not depend on its individual parts, but on their relationships to one another. Each boid applies **cohesion**, **alignment**, and **separation** rules to its neighbors within a limited range.
+
 **v2** (02/19/20)  
 ![](img/v2.gif)
 
 **v1** (02/08/20)  
 ![](img/v1.gif)
 
-## Flocking behavior fundamentals
+## Structure
 
-A flock simulation features **emergent behavior**, which is the behavior of a system that does not depend on its individual parts, but on their relationships to one another. Each boid applies **cohesion**, **alignment**, and **separation** rules to its neighbors within a limited range.
-
-* **Cohesion**: Each boid travels toward its neighbors. The cohesion vector is the average velocity toward neighbors' center of mass.
-* **Alignment**:  Each boid travels with its neighbors. The alignment vector is the average velocity of neighbors.
-* **Separation**: Each boid avoids colliding with its neighbors. The separation vector is the average opposite velocity of neighbors.
-
-## Pseudo code
-
-I used this [Boids Pseudocode](http://www.kfish.org/boids/pseudocode.html) for reference. This project has the following classes.
+This project has the following classes.
 
 * **`Game`** manages the window and takes care of drawing and rendering each boid per frame.
 * **`Flock`** creates and manages a vector of `Boid` objects, which it initially sets with a random starting position and random starting velocity. While the game runs, its function `Update()` calls each `Boid`'s `Update()`. 
 * **`Boid`** represents an individual boid, and they have their own `position` and `velocity` which determines their movements. They have a pointer to their `flock` so they can find other `Boid`'s, and ranges at which to apply their member functions `Cohesion()`, `Alignment()`, and `Separation()` are stored on the individual `Boid`.
 
-## Visual Studio 2019 Setup
+## VS 2019 Setup
 
 The external dependencies ([SFML](https://www.sfml-dev.org/download/sfml/2.5.1/) and [Box2D() ) are included [boids/external/](). 
 
