@@ -21,24 +21,12 @@
     <ClCompile Include="boid.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="flock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="game.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="boid.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="flock.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="game.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="box2d_hello_world.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

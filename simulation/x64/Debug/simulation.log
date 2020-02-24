@@ -1,2 +1,59 @@
-﻿  main.cpp
-  simulation.vcxproj -> C:\Users\mswenson\Desktop\repos\sfml-flock-sim\x64\Debug\simulation.exe
+﻿  boid.cpp
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.h(79,23): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.h(80,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(154,23): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(195,58): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(196,58): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(197,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(197,23): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(199,45): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(199,40): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(200,45): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(200,40): warning C4244: 'argument': conversion from 'double' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(201,29): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(201,17): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(208,54): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(208,40): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(209,54): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Morrie\Desktop\sfml-flock-sim\simulation\boid.cpp(209,40): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  simulation.vcxproj -> C:\Users\Morrie\Desktop\sfml-flock-sim\x64\Debug\simulation.exe

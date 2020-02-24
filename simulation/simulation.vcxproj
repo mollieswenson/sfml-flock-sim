@@ -194,15 +194,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="boid.cpp" />
-    <ClCompile Include="flock.cpp" />
-    <ClCompile Include="game.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="boid.h" />
-    <ClInclude Include="box2d_hello_world.h" />
     <ClInclude Include="flock.h" />
-    <ClInclude Include="game.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
