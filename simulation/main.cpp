@@ -7,9 +7,10 @@
 int main()
 
 {
-	sf::RenderWindow window(sf::VideoMode(800, 800), "Boids");
+	sf::RenderWindow window(sf::VideoMode(600, 600), "Boids");
+	window.setPosition(sf::Vector2i(-700, 50));
 
-	Flock birds(200);
+	Flock birds(100);
 
 	while (window.isOpen())
 	{
@@ -18,11 +19,9 @@ int main()
 		window.clear(sf::Color::Black);
 		for (int i = 0; i < birds.collection.size(); i++)
 		{
-			birds.collection[i].shape.setFillColor(sf::Color::Cyan);
 			window.draw(birds.collection[i].shape);
 		}
 			
-
 		window.display();
 
 		sf::Event event; // event loop

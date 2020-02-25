@@ -4,6 +4,9 @@ This is a practice C++ project implementing a flock simulation using [SFML](http
 
 A flock simulation features **emergent behavior**, which is the behavior of a system that does not depend on its individual parts, but on their relationships to one another. Each boid applies **cohesion**, **alignment**, and **separation** rules to its neighbors within a limited range.
 
+**v2** (02/25/20)  
+![](img/v3.gif)
+
 **v2** (02/19/20)  
 ![](img/v2.gif)
 

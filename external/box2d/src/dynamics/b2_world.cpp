@@ -1034,7 +1034,7 @@ void b2World::RayCast(b2RayCastCallback* callback, const b2Vec2& point1, const b
 	m_contactManager.m_broadPhase.RayCast(&wrapper, input);
 }
 
-void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color& color)
+void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color& palette)
 {
 	switch (fixture->GetType())
 	{
@@ -1046,7 +1046,7 @@ void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color
 			float radius = circle->m_radius;
 			b2Vec2 axis = b2Mul(xf.q, b2Vec2(1.0f, 0.0f));
 
-			m_debugDraw->DrawSolidCircle(center, radius, axis, color);
+			m_debugDraw->DrawSolidCircle(center, radius, axis, palette);
 		}
 		break;
 
@@ -1055,7 +1055,7 @@ void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color
 			b2EdgeShape* edge = (b2EdgeShape*)fixture->GetShape();
 			b2Vec2 v1 = b2Mul(xf, edge->m_vertex1);
 			b2Vec2 v2 = b2Mul(xf, edge->m_vertex2);
-			m_debugDraw->DrawSegment(v1, v2, color);
+			m_debugDraw->DrawSegment(v1, v2, palette);
 		}
 		break;
 
@@ -1065,10 +1065,10 @@ void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color
 			int32 count = chain->m_count;
 			const b2Vec2* vertices = chain->m_vertices;
 
-			b2Color ghostColor(0.75f * color.r, 0.75f * color.g, 0.75f * color.b, color.a);
+			b2Color ghostColor(0.75f * palette.r, 0.75f * palette.g, 0.75f * palette.b, palette.a);
 
 			b2Vec2 v1 = b2Mul(xf, vertices[0]);
-			m_debugDraw->DrawPoint(v1, 4.0f, color);
+			m_debugDraw->DrawPoint(v1, 4.0f, palette);
 
 			if (chain->m_hasPrevVertex)
 			{
@@ -1080,8 +1080,8 @@ void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color
 			for (int32 i = 1; i < count; ++i)
 			{
 				b2Vec2 v2 = b2Mul(xf, vertices[i]);
-				m_debugDraw->DrawSegment(v1, v2, color);
-				m_debugDraw->DrawPoint(v2, 4.0f, color);
+				m_debugDraw->DrawSegment(v1, v2, palette);
+				m_debugDraw->DrawPoint(v2, 4.0f, palette);
 				v1 = v2;
 			}
 
@@ -1106,7 +1106,7 @@ void b2World::DrawShape(b2Fixture* fixture, const b2Transform& xf, const b2Color
 				vertices[i] = b2Mul(xf, poly->m_vertices[i]);
 			}
 
-			m_debugDraw->DrawSolidPolygon(vertices, vertexCount, color);
+			m_debugDraw->DrawSolidPolygon(vertices, vertexCount, palette);
 		}
 		break;
             
@@ -1126,12 +1126,12 @@ void b2World::DrawJoint(b2Joint* joint)
 	b2Vec2 p1 = joint->GetAnchorA();
 	b2Vec2 p2 = joint->GetAnchorB();
 
-	b2Color color(0.5f, 0.8f, 0.8f);
+	b2Color palette(0.5f, 0.8f, 0.8f);
 
 	switch (joint->GetType())
 	{
 	case e_distanceJoint:
-		m_debugDraw->DrawSegment(p1, p2, color);
+		m_debugDraw->DrawSegment(p1, p2, palette);
 		break;
 
 	case e_pulleyJoint:
@@ -1139,9 +1139,9 @@ void b2World::DrawJoint(b2Joint* joint)
 		b2PulleyJoint* pulley = (b2PulleyJoint*)joint;
 		b2Vec2 s1 = pulley->GetGroundAnchorA();
 		b2Vec2 s2 = pulley->GetGroundAnchorB();
-		m_debugDraw->DrawSegment(s1, p1, color);
-		m_debugDraw->DrawSegment(s2, p2, color);
-		m_debugDraw->DrawSegment(s1, s2, color);
+		m_debugDraw->DrawSegment(s1, p1, palette);
+		m_debugDraw->DrawSegment(s2, p2, palette);
+		m_debugDraw->DrawSegment(s1, s2, palette);
 	}
 	break;
 
@@ -1159,9 +1159,9 @@ void b2World::DrawJoint(b2Joint* joint)
 	break;
 
 	default:
-		m_debugDraw->DrawSegment(x1, p1, color);
-		m_debugDraw->DrawSegment(p1, p2, color);
-		m_debugDraw->DrawSegment(x2, p2, color);
+		m_debugDraw->DrawSegment(x1, p1, palette);
+		m_debugDraw->DrawSegment(p1, p2, palette);
+		m_debugDraw->DrawSegment(x2, p2, palette);
 	}
 }
 
@@ -1215,7 +1215,7 @@ void b2World::DrawDebugData()
 
 	if (flags & b2Draw::e_pairBit)
 	{
-		b2Color color(0.3f, 0.9f, 0.9f);
+		b2Color palette(0.3f, 0.9f, 0.9f);
 		for (b2Contact* c = m_contactManager.m_contactList; c; c = c->GetNext())
 		{
 			//b2Fixture* fixtureA = c->GetFixtureA();
@@ -1224,13 +1224,13 @@ void b2World::DrawDebugData()
 			//b2Vec2 cA = fixtureA->GetAABB().GetCenter();
 			//b2Vec2 cB = fixtureB->GetAABB().GetCenter();
 
-			//g_debugDraw->DrawSegment(cA, cB, color);
+			//g_debugDraw->DrawSegment(cA, cB, palette);
 		}
 	}
 
 	if (flags & b2Draw::e_aabbBit)
 	{
-		b2Color color(0.9f, 0.3f, 0.9f);
+		b2Color palette(0.9f, 0.3f, 0.9f);
 		b2BroadPhase* bp = &m_contactManager.m_broadPhase;
 
 		for (b2Body* b = m_bodyList; b; b = b->GetNext())
@@ -1252,7 +1252,7 @@ void b2World::DrawDebugData()
 					vs[2].Set(aabb.upperBound.x, aabb.upperBound.y);
 					vs[3].Set(aabb.lowerBound.x, aabb.upperBound.y);
 
-					m_debugDraw->DrawPolygon(vs, 4, color);
+					m_debugDraw->DrawPolygon(vs, 4, palette);
 				}
 			}
 		}
